@@ -1,0 +1,2241 @@
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">td{font-family:courier;font-size:18px}
+p{line-height:23.0px;}</style></head><body style="background-color:#ffffee;margin:5px 5px 0px 5px"><table align="left"><tbody><tr><td align="right" style="color:teal" valign="top"><p>1<br>
+2<br>
+3<br>
+4<br>
+5<br>
+6<br>
+7<br>
+8<br>
+9<br>
+10<br>
+11<br>
+12<br>
+13<br>
+14<br>
+15<br>
+16<br>
+17<br>
+18<br>
+19<br>
+20<br>
+21<br>
+22<br>
+23<br>
+24<br>
+25<br>
+26<br>
+27<br>
+28<br>
+29<br>
+30<br>
+31<br>
+32<br>
+33<br>
+34<br>
+35<br>
+36<br>
+37<br>
+38<br>
+39<br>
+40<br>
+41<br>
+42<br>
+43<br>
+44<br>
+45<br>
+46<br>
+47<br>
+48<br>
+</p></td><td align="left" valign="top"><p><nobr><b>public</b> <b>class</b> StarPoints</nobr><br>
+<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr><b>public</b> <b>static</b> <b>void</b> tips()</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>double</b> outerRadius = 1;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>double</b> innerRadius = outerRadius * Math.sin(Math.PI / 10) / Math.sin(3*Math.PI / 10);  <font color="green">//&nbsp;Calculate&nbsp;inner&nbsp;radius&nbsp;based&nbsp;on&nbsp;trigonometry</font></nobr><font color="green"><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></nobr></font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>double</b> angleIncrement = ( Math.PI / 5);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>double</b> startAngle = Math.PI / 2;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><font color="green">//&nbsp;Print&nbsp;outer&nbsp;vertices&nbsp;first</font></nobr><font color="green"><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></nobr></font><nobr><b>for</b> (int i = 0; i &lt; 10; i++)</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>double</b> angle = startAngle + i * angleIncrement;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>double</b> radius = (i%2)==0? outerRadius:innerRadius;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>double</b> x = radius * Math.cos(angle);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>double</b> y = radius * Math.sin(angle);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><font color="green">//&nbsp;System.out.println((i&nbsp;&nbsp;+&nbsp;1)&nbsp;+&nbsp;":&nbsp;("&nbsp;+&nbsp;x&nbsp;+&nbsp;",&nbsp;"&nbsp;+&nbsp;y&nbsp;+&nbsp;")");</font></nobr><font color="green"><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></nobr></font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr><b>public</b> <b>static</b> <b>int</b> [][] vertices(double cx, <b>double</b> cy, <b>double</b> r,  <b>double</b> angle)</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>double</b> outerRadius = 1;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>double</b> innerRadius = outerRadius * Math.sin(Math.PI / 10) / Math.sin(3*Math.PI / 10);  <font color="green">//&nbsp;Calculate&nbsp;inner&nbsp;radius&nbsp;based&nbsp;on&nbsp;trigonometry</font></nobr><font color="green"><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></nobr></font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>double</b> angleIncrement = ( Math.PI / 5);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>double</b> startAngle =   angle;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>int</b> [][] d = <b>new</b> int[2][10];</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>d[0] = <b>new</b> int[10]; d[1] = <b>new</b> int[10];</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>for</b> (int i = 0; i &lt; 10; i++)</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>angle = startAngle + i * angleIncrement;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>double</b> radius = r*((i%2)==0? outerRadius:innerRadius);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>double</b> x = radius * Math.cos(angle) + cx;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>double</b> y = radius * Math.sin(angle) + cy;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>d[0][i] = (int)Math.round(x); d[1][i] = (int)Math.round(y);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>System.out.println((i+1) + <font color="red">":&nbsp;("</font>+ x + <font color="red">",&nbsp;"</font>+ y + <font color="red">")"</font>);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>return</b> d;</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr><b>public</b> <b>static</b> <b>void</b> main(String[] args)</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>tips();</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>vertices(34, 78, 100,0);</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+<nobr>}</nobr><br>
+<nobr></nobr><br>
+</p></td></tr></tbody></table>
+<script> if(window==parent)window.moveTo(screen.width/2 - 300,3);window.resizeTo(602,screen.height-30);</script>
+<table align=left style=display:block><tr><td  align=right style=color:teal valign=top><p>1<br>
+2<br>
+3<br>
+4<br>
+5<br>
+6<br>
+7<br>
+8<br>
+9<br>
+10<br>
+11<br>
+12<br>
+13<br>
+14<br>
+15<br>
+16<br>
+17<br>
+18<br>
+19<br>
+20<br>
+21<br>
+22<br>
+23<br>
+24<br>
+25<br>
+26<br>
+27<br>
+28<br>
+29<br>
+30<br>
+31<br>
+32<br>
+33<br>
+34<br>
+35<br>
+36<br>
+37<br>
+38<br>
+39<br>
+40<br>
+41<br>
+42<br>
+43<br>
+44<br>
+45<br>
+46<br>
+47<br>
+48<br>
+49<br>
+50<br>
+51<br>
+52<br>
+53<br>
+54<br>
+55<br>
+56<br>
+57<br>
+58<br>
+59<br>
+60<br>
+61<br>
+62<br>
+63<br>
+64<br>
+65<br>
+66<br>
+67<br>
+68<br>
+69<br>
+70<br>
+71<br>
+72<br>
+73<br>
+74<br>
+75<br>
+76<br>
+77<br>
+78<br>
+79<br>
+</p></td><td  align=left valign=top><p><nobr><b>import</b> java.awt.Canvas;</nobr><br>
+<nobr><b>import</b> java.awt.Color;</nobr><br>
+<nobr><b>import</b> java.awt.Graphics;</nobr><br>
+<nobr><b>import</b> javax.swing.JFrame;</nobr><br>
+<nobr></nobr><br>
+<nobr><b>class</b> FlagCanvas <b>extends</b> Canvas</nobr><br>
+<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr><b>private</b> <b>int</b> flagWidth;</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr><b>private</b> <b>int</b> flagHeight;</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr></nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr><b>public</b> FlagCanvas(int width)</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>flagWidth = width;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>flagHeight = width*2/3;</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr></nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>@Override</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr><b>public</b> <b>void</b> paint(Graphics g)</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><font color=green>//&nbsp;Draw&nbsp;the&nbsp;red&nbsp;rectangle&nbsp;background&nbsp;of&nbsp;the&nbsp;flag</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></font>g.setColor(Color.RED);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>g.fillRect(0, 0, flagWidth, flagHeight);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>double</b> ratio = flagWidth/30.0;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><font color=green>/*</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  5,5,&nbsp;3,-pi/2  </nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  10,2,1,pi-atan(3/5))</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  12,4,1,pi-atan(1/7))</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  12,7,1,pi&nbsp;+&nbsp;atan(2/7))</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;10,9,1,pi+atan(4/5))</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</font></nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>paintStar(ratio*5, ratio*5, ratio*3, 3*Math.PI/2, g);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>paintStar(ratio*10, ratio*2, ratio,   Math.PI-(Math.atan( 0.6)), g);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>paintStar(ratio*12, ratio*4, ratio,    Math.PI-Math.atan(1/7.0), g);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>paintStar(ratio*12, ratio*7, ratio,  Math.PI + Math.atan(2.0/7), g);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>paintStar(ratio*10, ratio*9, ratio,  Math.PI+Math.atan(0.8), g);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr><b>int</b> [][] vertices(double cx, <b>double</b> cy, <b>double</b> r,  <b>double</b> angle)</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>double</b> outerRadius = 1;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>double</b> innerRadius = outerRadius * Math.sin(Math.PI / 10) / Math.sin(3*Math.PI / 10);  <font color=green>//&nbsp;Calculate&nbsp;inner&nbsp;radius&nbsp;based&nbsp;on&nbsp;trigonometry</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></font></nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>double</b> angleIncrement = ( Math.PI / 5);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>double</b> startAngle =   angle;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>int</b> [][] d = <b>new</b> int[2][10];</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>d[0] = <b>new</b> int[10]; d[1] = <b>new</b> int[10];</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>for</b> (int i = 0; i &lt; 10; i++)</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>angle = startAngle + i * angleIncrement;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>double</b> radius = r*((i%2)==0? outerRadius:innerRadius);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>double</b> x = radius * Math.cos(angle) + cx;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>double</b> y = radius * Math.sin(angle) + cy;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>d[0][i] = (int)Math.round(x);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>d[1][i] = (int)Math.round(y);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>System.out.println(<font color=red>"Outer&nbsp;vertex:&nbsp;("</font>+ x + <font color=red>",&nbsp;"</font>+ y + <font color=red>")"</font>);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>return</b> d;</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr><font color=green>//&nbsp;Method&nbsp;to&nbsp;paint&nbsp;a&nbsp;five-pointed&nbsp;star</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr></font><b>public</b> <b>void</b> paintStar(double centerX, <b>double</b> centerY, <b>double</b> radius,double  ang, Graphics g)</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>g.setColor(Color.YELLOW);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>int</b> [][] d = vertices(centerX,centerY,radius,ang);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>g.fillPolygon(d[0], d[1],10);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr></nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr><b>public</b> <b>static</b> <b>void</b> main(String[] args)</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>JFrame frame = <b>new</b> JFrame(<font color=red>"Chinese&nbsp;National&nbsp;Flag&nbsp;Simulation"</font>);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>FlagCanvas canvas = <b>new</b> FlagCanvas(1152);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>frame.setSize(canvas.flagWidth, canvas.flagHeight);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>frame.getContentPane().add(canvas);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>frame.setVisible(true);</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+<nobr>}</nobr><br>
+<nobr></nobr><br>
+</p></td></tr></table>
+<table align=left style=display:block><tr><td  align=right style=color:teal valign=top><p>1<br>
+2<br>
+3<br>
+4<br>
+5<br>
+6<br>
+7<br>
+8<br>
+9<br>
+10<br>
+11<br>
+12<br>
+13<br>
+14<br>
+15<br>
+16<br>
+17<br>
+18<br>
+19<br>
+20<br>
+21<br>
+22<br>
+23<br>
+24<br>
+25<br>
+26<br>
+27<br>
+28<br>
+29<br>
+30<br>
+31<br>
+32<br>
+33<br>
+34<br>
+35<br>
+36<br>
+37<br>
+38<br>
+39<br>
+40<br>
+41<br>
+42<br>
+43<br>
+44<br>
+45<br>
+46<br>
+47<br>
+48<br>
+49<br>
+50<br>
+51<br>
+52<br>
+</p></td><td  align=left valign=top><p><nobr><b>import</b> java.util.*;</nobr><br>
+<nobr></nobr><br>
+<nobr><b>public</b> <b>class</b> Sum</nobr><br>
+<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr><b>public</b> <b>static</b> <b>void</b> main(String[] args)</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>double</b> sum = 0.0;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>Scanner s = <b>new</b> Scanner(System.in);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><font color=green>//&nbsp;Skip&nbsp;the&nbsp;header&nbsp;line&nbsp;(the&nbsp;first&nbsp;line&nbsp;with&nbsp;"Name:&nbsp;Amount")</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></font><b>if</b> (s.hasNextLine())</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>s.nextLine(); <font color=green>//&nbsp;Skip&nbsp;the&nbsp;first&nbsp;line</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></font></nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><font color=green>//&nbsp;Read&nbsp;and&nbsp;process&nbsp;each&nbsp;line</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></font><b>while</b> (true)</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>try</b></nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>String line = s.nextLine();  <font color=green>//&nbsp;Read&nbsp;the&nbsp;next&nbsp;line</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></font><b>if</b> (line.equals(<font color=red>"The&nbsp;end"</font>))</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><font color=green>//&nbsp;Stop&nbsp;if&nbsp;"The&nbsp;end"&nbsp;is&nbsp;found</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></font>break;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><font color=green>//&nbsp;Split&nbsp;the&nbsp;line&nbsp;by&nbsp;colon&nbsp;and&nbsp;get&nbsp;the&nbsp;second&nbsp;part&nbsp;(amount)</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></font>String[] parts = line.split(<font color=red>":"</font>);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>if</b> (parts.length &gt;= 2)</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><font color=green>//&nbsp;Trim&nbsp;to&nbsp;remove&nbsp;any&nbsp;spaces&nbsp;around&nbsp;the&nbsp;amount&nbsp;and&nbsp;parse&nbsp;the&nbsp;number</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></font>String amountStr = parts[1].trim();</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>double</b> amount = Double.parseDouble(amountStr);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>sum += amount;  <font color=green>//&nbsp;Add&nbsp;the&nbsp;amount&nbsp;to&nbsp;the&nbsp;sum</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></font></nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>catch</b> (Exception e)</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>break;  <font color=green>//&nbsp;If&nbsp;there's&nbsp;an&nbsp;exception,&nbsp;stop&nbsp;processing</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></font></nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>System.out.println(<font color=red>"sum="</font>+ sum);  <font color=green>//&nbsp;Output&nbsp;the&nbsp;final&nbsp;sum</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></font>s.close();  <font color=green>//&nbsp;Close&nbsp;the&nbsp;scanner</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></font></nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+<nobr>}</nobr><br>
+<nobr></nobr><br>
+</p></td></tr></table>
+<table align=left style=display:block><tr><td  align=right style=color:teal valign=top><p>1<br>
+2<br>
+3<br>
+4<br>
+5<br>
+6<br>
+7<br>
+8<br>
+9<br>
+10<br>
+11<br>
+12<br>
+13<br>
+14<br>
+15<br>
+16<br>
+17<br>
+18<br>
+19<br>
+20<br>
+21<br>
+22<br>
+23<br>
+24<br>
+25<br>
+26<br>
+27<br>
+28<br>
+29<br>
+30<br>
+31<br>
+32<br>
+33<br>
+34<br>
+35<br>
+36<br>
+37<br>
+38<br>
+39<br>
+40<br>
+41<br>
+42<br>
+43<br>
+44<br>
+45<br>
+46<br>
+47<br>
+48<br>
+49<br>
+50<br>
+51<br>
+52<br>
+53<br>
+54<br>
+55<br>
+56<br>
+57<br>
+58<br>
+59<br>
+60<br>
+61<br>
+62<br>
+63<br>
+64<br>
+65<br>
+66<br>
+67<br>
+68<br>
+69<br>
+70<br>
+71<br>
+72<br>
+73<br>
+74<br>
+75<br>
+76<br>
+77<br>
+78<br>
+79<br>
+80<br>
+81<br>
+82<br>
+83<br>
+84<br>
+85<br>
+86<br>
+87<br>
+88<br>
+89<br>
+90<br>
+91<br>
+92<br>
+93<br>
+94<br>
+95<br>
+96<br>
+97<br>
+98<br>
+99<br>
+100<br>
+101<br>
+102<br>
+103<br>
+104<br>
+105<br>
+106<br>
+107<br>
+108<br>
+109<br>
+110<br>
+111<br>
+112<br>
+113<br>
+114<br>
+115<br>
+116<br>
+117<br>
+118<br>
+119<br>
+120<br>
+121<br>
+122<br>
+123<br>
+124<br>
+125<br>
+126<br>
+127<br>
+128<br>
+129<br>
+130<br>
+131<br>
+132<br>
+133<br>
+134<br>
+135<br>
+136<br>
+137<br>
+138<br>
+139<br>
+140<br>
+141<br>
+142<br>
+143<br>
+144<br>
+145<br>
+146<br>
+147<br>
+148<br>
+149<br>
+150<br>
+151<br>
+152<br>
+153<br>
+154<br>
+155<br>
+156<br>
+157<br>
+158<br>
+159<br>
+160<br>
+161<br>
+162<br>
+163<br>
+164<br>
+165<br>
+166<br>
+167<br>
+168<br>
+169<br>
+170<br>
+171<br>
+172<br>
+173<br>
+174<br>
+175<br>
+176<br>
+177<br>
+178<br>
+179<br>
+180<br>
+181<br>
+182<br>
+183<br>
+184<br>
+185<br>
+186<br>
+187<br>
+188<br>
+189<br>
+190<br>
+191<br>
+192<br>
+193<br>
+</p></td><td  align=left valign=top><p><nobr><b>import</b> java.io.File;</nobr><br>
+<nobr><b>import</b> java.util.*;</nobr><br>
+<nobr></nobr><br>
+<nobr><b>public</b> <b>class</b> Grades</nobr><br>
+<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr></nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr><b>public</b> <b>static</b> <b>void</b> main(String[] args)</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>StringBuilder storestring = <b>new</b> StringBuilder();</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>try</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>Scanner s = <b>new</b> Scanner(System.in);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>int</b> n = 0;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>String id, Grade, Score, Absence, Time, Start, Sub, Quiz, Order;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>double</b> idsum = 0, Gradesum = 0, Scoresum = 0, Absencesum = 0, Timesum = 0, Startsum = 0, Subsum = 0, Quizsum = 0, Ordersum = 0;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>double</b> idmean, Grademean, Scoremean, Absencemean, Timemean, Startmean, Submean, Quizmean, Ordermean;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>double</b> iddev, Gradedev, Scoredev, Absencedev, Timedev, Startdev, Subdev, Quizdev, Orderdev;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>double</b> GradeNum;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>s.useDelimiter(<font color=red>"\t"</font>);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>while</b> (s.hasNext())</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>n++;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>id = s.next().trim();</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>Grade = s.next().trim();</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>Score = s.next().trim();</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>Absence = s.next().trim();</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>Time = s.next().trim();</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>Start = s.next().trim();</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>Sub = s.next().trim();</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>Quiz = s.next().trim();</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>storestring.append(id);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>storestring.append(<font color=red>"\t"</font>);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>storestring.append(Grade);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>storestring.append(<font color=red>"\t"</font>);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>storestring.append(Score);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>storestring.append(<font color=red>"\t"</font>);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>storestring.append(Absence);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>storestring.append(<font color=red>"\t"</font>);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>storestring.append(Time);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>storestring.append(<font color=red>"\t"</font>);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>storestring.append(Start);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>storestring.append(<font color=red>"\t"</font>);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>storestring.append(Sub);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>storestring.append(<font color=red>"\t"</font>);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>storestring.append(Quiz);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>storestring.append(<font color=red>"\t"</font>);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>s.useDelimiter(<font color=red>"\n"</font>);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>Order = s.next().trim();</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>s.useDelimiter(<font color=red>"\t"</font>);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>storestring.append(Order);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>storestring.append(<font color=red>"\n"</font>);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>if</b> (n == 1)</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>continue;  <font color=green>//&nbsp;ignore&nbsp;the&nbsp;heading</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></font></nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>idsum += Double.parseDouble(id);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>Scoresum += Double.parseDouble(Score);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>if</b> (Grade.equals(<font color=red>"A"</font>))</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>GradeNum = 4;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>else</b> <b>if</b> (Grade.equals(<font color=red>"B"</font>))</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>GradeNum = 3;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>else</b> <b>if</b> (Grade.equals(<font color=red>"C"</font>))</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>GradeNum = 2;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>else</b> <b>if</b> (Grade.equals(<font color=red>"D"</font>))</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>GradeNum = 1;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>else</b></nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>GradeNum = 0;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>Gradesum += GradeNum;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>Scoresum += Double.parseDouble(Score);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>Absencesum += Double.parseDouble(Absence);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>Timesum += Double.parseDouble(Time);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>Startsum += Double.parseDouble(Start);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>Subsum += Double.parseDouble(Sub);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>Quizsum += Double.parseDouble(Quiz);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>Ordersum += Double.parseDouble(Order);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>idmean = idsum /(n-1);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>System.out.println(<font color=red>"idmean:&nbsp;"</font>+ idmean);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>Grademean = Gradesum /(n-1);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>System.out.println(<font color=red>"Grademean:&nbsp;"</font>+ Grademean);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>Scoremean = Scoresum /(n-1);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>System.out.println(<font color=red>"Scoremean:&nbsp;"</font>+ Scoremean);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>Absencemean = Absencesum /(n-1);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>System.out.println(<font color=red>"Absencemean:&nbsp;"</font>+ Absencemean);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>Timemean = Timesum /(n-1);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>System.out.println(<font color=red>"Timemean:&nbsp;"</font>+ Timemean);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>Startmean = Startsum /(n-1);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>System.out.println(<font color=red>"Startmean:&nbsp;"</font>+ Startmean);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>Submean = Subsum /(n-1);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>System.out.println(<font color=red>"Submean:&nbsp;"</font>+ Submean);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>Quizmean = Quizsum /(n-1);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>System.out.println(<font color=red>"Quizmean:&nbsp;"</font>+ Quizmean);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>Ordermean = Ordersum /(n-1);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>System.out.println(<font color=red>"Ordermean:&nbsp;"</font>+ Ordermean);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><font color=green>//System.out.println(storestring.toString());</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></font>s = <b>new</b> Scanner(storestring.toString().trim()); <font color=green>//&nbsp;"rewind"&nbsp;the&nbsp;data&nbsp;based&nbsp;on&nbsp;the&nbsp;stored&nbsp;string.</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></font>s.useDelimiter(<font color=red>"\t"</font>);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>idsum = 0;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>Gradesum = 0;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>Scoresum = 0;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>Absencesum = 0;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>Timesum = 0;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>Startsum = 0;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>Subsum = 0;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>Quizsum = 0;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>Ordersum = 0;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>n = 0;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>while</b> (s.hasNext())</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>n++;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>id = s.next().trim();</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>Grade = s.next().trim();</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>Score = s.next().trim();</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>Absence = s.next().trim();</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>Time = s.next().trim();</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>Start = s.next().trim();</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>Sub = s.next().trim();</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>Quiz = s.next().trim();</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>s.useDelimiter(<font color=red>"\n"</font>);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>Order = s.next().trim();</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>s.useDelimiter(<font color=red>"\t"</font>);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>if</b> (n == 1) continue;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>idsum += Math.pow(Double.parseDouble(id) - idmean, 2);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>if</b> (Grade.equals(<font color=red>"A"</font>))</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>GradeNum = 4;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>else</b> <b>if</b> (Grade.equals(<font color=red>"B"</font>))</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>GradeNum = 3;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>else</b> <b>if</b> (Grade.equals(<font color=red>"C"</font>))</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>GradeNum = 2;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>else</b> <b>if</b> (Grade.equals(<font color=red>"D"</font>))</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>GradeNum = 1;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>else</b></nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>GradeNum = 0;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>Gradesum += Math.pow(GradeNum - Grademean, 2);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>Scoresum += Math.pow(Double.parseDouble(id) - Scoremean, 2);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>Absencesum += Math.pow(Double.parseDouble(id) - Absencemean, 2);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>Timesum += Math.pow(Double.parseDouble(id) - Timemean, 2);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>Startsum += Math.pow(Double.parseDouble(id) - Startmean, 2);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>Subsum += Math.pow(Double.parseDouble(id) - Submean, 2);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>Quizsum += Math.pow(Double.parseDouble(id) - Quizmean, 2);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>Ordersum += Math.pow(Double.parseDouble(id) - Ordermean, 2);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>iddev = Math.sqrt(idsum /(n-1));</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>System.out.println(<font color=red>"iddev:&nbsp;"</font>+ iddev);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>Gradedev = Math.sqrt(Gradesum /(n-1));</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>System.out.println(<font color=red>"Gradedev:&nbsp;"</font>+ Gradedev);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>Scoredev = Math.sqrt(Scoresum /(n-1));</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>System.out.println(<font color=red>"Scoredev:&nbsp;"</font>+ Scoredev);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>Absencedev = Math.sqrt(Absencesum /(n-1));</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>System.out.println(<font color=red>"Absencedev:&nbsp;"</font>+ Absencedev);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>Timedev = Math.sqrt(Timesum /(n-1));</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>System.out.println(<font color=red>"Timedev:&nbsp;"</font>+ Timedev);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>Startdev = Math.sqrt(Startsum /(n-1));</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>System.out.println(<font color=red>"Startdev:&nbsp;"</font>+ Startdev);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>Subdev = Math.sqrt(Subsum /(n-1));</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>System.out.println(<font color=red>"Subdev:&nbsp;"</font>+ Subdev);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>Quizdev = Math.sqrt(Quizsum /(n-1));</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>System.out.println(<font color=red>"Quizdev:&nbsp;"</font>+ Quizdev);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>Orderdev = Math.sqrt(Ordersum /(n-1));</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>System.out.println(<font color=red>"Orderdev:&nbsp;"</font>+ Orderdev);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>catch(Exception e)</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+<nobr>}</nobr><br>
+<nobr></nobr><br>
+</p></td></tr></table>
+<table align=left style=display:block><tr><td  align=right style=color:teal valign=top><p>1<br>
+2<br>
+3<br>
+4<br>
+5<br>
+6<br>
+7<br>
+8<br>
+9<br>
+10<br>
+11<br>
+12<br>
+13<br>
+14<br>
+15<br>
+16<br>
+17<br>
+18<br>
+19<br>
+20<br>
+21<br>
+22<br>
+23<br>
+24<br>
+25<br>
+26<br>
+27<br>
+28<br>
+29<br>
+30<br>
+31<br>
+32<br>
+33<br>
+34<br>
+35<br>
+36<br>
+37<br>
+38<br>
+39<br>
+40<br>
+41<br>
+42<br>
+43<br>
+44<br>
+45<br>
+46<br>
+47<br>
+48<br>
+49<br>
+50<br>
+51<br>
+52<br>
+53<br>
+54<br>
+55<br>
+56<br>
+57<br>
+58<br>
+59<br>
+60<br>
+61<br>
+62<br>
+63<br>
+64<br>
+65<br>
+66<br>
+67<br>
+68<br>
+69<br>
+70<br>
+71<br>
+72<br>
+73<br>
+74<br>
+75<br>
+76<br>
+77<br>
+78<br>
+79<br>
+80<br>
+81<br>
+82<br>
+83<br>
+84<br>
+85<br>
+86<br>
+87<br>
+88<br>
+89<br>
+90<br>
+91<br>
+92<br>
+93<br>
+94<br>
+95<br>
+96<br>
+97<br>
+98<br>
+99<br>
+100<br>
+101<br>
+102<br>
+103<br>
+104<br>
+105<br>
+106<br>
+107<br>
+108<br>
+109<br>
+110<br>
+111<br>
+112<br>
+113<br>
+114<br>
+115<br>
+116<br>
+117<br>
+118<br>
+119<br>
+120<br>
+121<br>
+122<br>
+123<br>
+124<br>
+125<br>
+126<br>
+127<br>
+128<br>
+129<br>
+130<br>
+131<br>
+132<br>
+133<br>
+134<br>
+135<br>
+136<br>
+137<br>
+138<br>
+139<br>
+140<br>
+141<br>
+142<br>
+143<br>
+144<br>
+145<br>
+146<br>
+147<br>
+148<br>
+149<br>
+150<br>
+151<br>
+152<br>
+153<br>
+154<br>
+155<br>
+</p></td><td  align=left valign=top><p><nobr><b>import</b> java.awt.*;</nobr><br>
+<nobr><b>import</b> javax.swing.*;</nobr><br>
+<nobr></nobr><br>
+<nobr><b>public</b> <b>class</b> Person  <b>extends</b> javax.swing.JFrame</nobr><br>
+<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr></nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr><b>private</b> <b>void</b> initComponents0()</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>Container contentPane = getContentPane();</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>contentPane.setLayout(new GridBagLayout());</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>GridBagConstraints c = <b>new</b> GridBagConstraints();</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>JLabel lblName = <b>new</b> JLabel(<font color=red>"Name"</font>);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.gridheight = 1;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.anchor = GridBagConstraints.NORTHWEST;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.fill = GridBagConstraints.HORIZONTAL;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.gridwidth = 1;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.gridx = 0;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.gridy = 0;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.insets = <b>new</b> Insets(1,3,2,2);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.ipadx = 1;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.ipady = 1;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.weightx =  0;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.weighty =  0;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>contentPane.add(lblName,c);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>JTextField txtName = <b>new</b> JTextField(30);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.gridheight = 1;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.anchor = GridBagConstraints.NORTHWEST;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.fill = GridBagConstraints.NONE;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.gridwidth = 1;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.gridx = 1;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.gridy = 0;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.insets = <b>new</b> Insets(1,3,2,2);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.ipadx = 1;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.ipady = 1;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.weightx = 1.0;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.weighty = 1.0;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>contentPane.add(txtName,c);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>JLabel lblEmail = <b>new</b> JLabel(<font color=red>"Email"</font>);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.gridheight = 1;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.anchor = GridBagConstraints.NORTHWEST;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.fill = GridBagConstraints.HORIZONTAL;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.gridwidth = 1;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.gridx = 0;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.gridy = 1;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.insets = <b>new</b> Insets(1,3,2,2);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.ipadx = 1;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.ipady = 1;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.weightx =  0;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.weighty =  0;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>contentPane.add(lblEmail,c);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>lblEmail.setVisible(true);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>JTextField txtEmail = <b>new</b> JTextField(30);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.gridheight = 1;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.anchor = GridBagConstraints.NORTHWEST;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.fill = GridBagConstraints.NONE;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.gridwidth = 1;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.gridx = 1;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.gridy = 1;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.insets = <b>new</b> Insets(1,3,2,2);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.ipadx = 1;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.ipady = 1;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.weightx = 1.0;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.weighty = 1.0;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>contentPane.add(txtEmail,c);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>JLabel lblCountry = <b>new</b> JLabel(<font color=red>"Country"</font>);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.gridheight = 1;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.anchor = GridBagConstraints.NORTHWEST;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.gridwidth = 1;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.gridx = 0;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.gridy = 2;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.insets = <b>new</b> Insets(1,3,2,2);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.ipadx = 1;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.ipady = 1;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.weightx =  0;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.weighty = 0;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>contentPane.add(lblCountry,c);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>JComboBox cmbCountry = <b>new</b> JComboBox();</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.gridheight = 1;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.anchor = GridBagConstraints.NORTHWEST;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.gridwidth = 1;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.gridx = 1;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.gridy = 2;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.insets = <b>new</b> Insets(1,3,2,2);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.ipadx = 1;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.ipady = 1;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.weightx = 1.0;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.weighty = 1.0;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>contentPane.add(cmbCountry,c);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>cmbCountry.setModel(new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[]</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><font color=red>"USA"</font>, <font color=red>"Canada"</font>, <font color=red>"Mexico"</font></nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>));</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>JLabel lblAddress = <b>new</b> JLabel(<font color=red>"Address"</font>);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.gridheight = 1;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.anchor = GridBagConstraints.NORTHWEST;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.fill = GridBagConstraints.HORIZONTAL;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.gridwidth = 1;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.gridx = 0;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.gridy = 3;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.insets = <b>new</b> Insets(1,3,2,2);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.ipadx = 1;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.ipady = 1;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.weightx = 0;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.weighty = 0;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>contentPane.add(lblAddress,c);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>JTextArea txtAddress = <b>new</b> JTextArea(4, 30);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.gridheight = 1;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.anchor = GridBagConstraints.NORTHWEST;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.fill = GridBagConstraints.HORIZONTAL;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.gridwidth = 1;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.gridx = 1;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.gridy = 3;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.insets = <b>new</b> Insets(1,3,2,2);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.ipadx = 1;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.ipady = 1;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.weightx = 1.0;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.weighty = 1.0;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>contentPane.add(txtAddress,c);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>JButton butSubmit = <b>new</b> JButton(<font color=red>"Submit"</font>);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.gridheight = 1;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.anchor = GridBagConstraints.CENTER;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.fill = GridBagConstraints.NONE;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.gridwidth = 2;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.gridx = 0;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.gridy = 4;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.insets = <b>new</b> Insets(1,3,2,2);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.ipadx = 1;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.ipady = 1;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.weightx = 1.0;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.weighty = 1.0;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>contentPane.add(butSubmit,c);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>pack();</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr></nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr><b>public</b> Person()</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>initComponents0();</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr><b>public</b> <b>static</b> <b>void</b> main(String args[])</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>new</b> Person().setVisible(true);</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+<nobr>}</nobr><br>
+</p></td></tr></table>
+<table align=left style=display:block><tr><td  align=right style=color:teal valign=top><p>1<br>
+2<br>
+3<br>
+4<br>
+5<br>
+6<br>
+7<br>
+8<br>
+9<br>
+10<br>
+11<br>
+12<br>
+13<br>
+14<br>
+15<br>
+16<br>
+17<br>
+18<br>
+19<br>
+20<br>
+21<br>
+22<br>
+23<br>
+24<br>
+25<br>
+26<br>
+27<br>
+28<br>
+29<br>
+30<br>
+31<br>
+32<br>
+33<br>
+34<br>
+35<br>
+36<br>
+37<br>
+38<br>
+39<br>
+40<br>
+41<br>
+42<br>
+43<br>
+44<br>
+45<br>
+46<br>
+47<br>
+48<br>
+49<br>
+50<br>
+51<br>
+52<br>
+53<br>
+54<br>
+55<br>
+56<br>
+57<br>
+58<br>
+59<br>
+60<br>
+61<br>
+62<br>
+63<br>
+64<br>
+65<br>
+66<br>
+67<br>
+68<br>
+69<br>
+70<br>
+71<br>
+72<br>
+73<br>
+74<br>
+75<br>
+76<br>
+77<br>
+78<br>
+79<br>
+80<br>
+81<br>
+82<br>
+83<br>
+84<br>
+85<br>
+86<br>
+87<br>
+88<br>
+89<br>
+90<br>
+91<br>
+92<br>
+93<br>
+94<br>
+95<br>
+96<br>
+97<br>
+98<br>
+99<br>
+100<br>
+101<br>
+102<br>
+103<br>
+104<br>
+105<br>
+106<br>
+107<br>
+108<br>
+109<br>
+110<br>
+111<br>
+112<br>
+113<br>
+114<br>
+115<br>
+116<br>
+117<br>
+118<br>
+119<br>
+120<br>
+121<br>
+122<br>
+123<br>
+124<br>
+125<br>
+126<br>
+127<br>
+128<br>
+129<br>
+130<br>
+131<br>
+132<br>
+133<br>
+134<br>
+135<br>
+136<br>
+137<br>
+138<br>
+139<br>
+140<br>
+141<br>
+142<br>
+143<br>
+144<br>
+145<br>
+146<br>
+147<br>
+148<br>
+149<br>
+150<br>
+151<br>
+152<br>
+153<br>
+154<br>
+155<br>
+156<br>
+157<br>
+158<br>
+159<br>
+160<br>
+161<br>
+162<br>
+</p></td><td  align=left valign=top><p><nobr><b>import</b> javax.swing.*;</nobr><br>
+<nobr><b>import</b> java.awt.*;</nobr><br>
+<nobr><b>import</b> java.awt.event.*;</nobr><br>
+<nobr><b>import</b> java.io.*;</nobr><br>
+<nobr><b>import</b> java.util.*;</nobr><br>
+<nobr></nobr><br>
+<nobr><b>public</b> <b>class</b> EditableDatasheet <b>extends</b> JFrame</nobr><br>
+<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr><b>private</b> <b>static</b> <b>final</b> <b>int</b> ROWS = 5; <font color=green>//&nbsp;假设有5行数据</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr></font><b>private</b> <b>static</b> <b>final</b> <b>int</b> COLS = 3; <font color=green>//&nbsp;假设有3列数据</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr></font><b>private</b> String[][] data = <b>new</b> String[ROWS][COLS];</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr><b>private</b> String[] columnNames =</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><font color=red>"ID"</font>, <font color=red>"Grade"</font>, <font color=red>"Score"</font></nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>};</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr></nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr><b>public</b> EditableDatasheet(String filename)</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><font color=green>//&nbsp;设置窗口基本属性</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></font>setTitle(<font color=red>"Editable&nbsp;Datasheet"</font>);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>setSize(800, 600);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><font color=green>//&nbsp;读取数据文件</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></font>readDataFromFile(filename);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><font color=green>//&nbsp;创建菜单栏</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></font>JMenuBar menuBar = <b>new</b> JMenuBar();</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>JMenu fileMenu = <b>new</b> JMenu(<font color=red>"File"</font>);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>JMenuItem saveItem = <b>new</b> JMenuItem(<font color=red>"Save"</font>);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>saveItem.addActionListener(new ActionListener()</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>public</b> <b>void</b> actionPerformed(ActionEvent e)</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>saveData(filename);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>fileMenu.add(saveItem);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>menuBar.add(fileMenu);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>setJMenuBar(menuBar);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><font color=green>//&nbsp;创建表格</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></font>JPanel panel = <b>new</b> JPanel();</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>panel.setLayout(new GridLayout(ROWS + 1, COLS));</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><font color=green>//&nbsp;创建表格的标题行</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></font><b>for</b> (int col = 0; col &lt; COLS; col++)</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>JLabel lbl = <b>new</b> JLabel(columnNames[col]);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>lbl.setName(<font color=red>"num0_"</font>+ col); <font color=green>//&nbsp;设置名称</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></font>panel.add(lbl);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><font color=green>//&nbsp;填充数据行</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></font><b>for</b> (int row = 1; row &lt; ROWS + 1; row++)</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>for</b> (int col = 0; col &lt; COLS; col++)</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>if</b> (col == 1)</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><font color=green>//&nbsp;如果是第二列&nbsp;(Grade)&nbsp;使用&nbsp;JComboBox</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></font>JComboBox&lt;String&gt; cmb = <b>new</b> JComboBox&lt;&gt;(new String[]</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><font color=red>"A"</font>, <font color=red>"B"</font>, <font color=red>"C"</font>, <font color=red>"D"</font>, <font color=red>"F"</font></nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>cmb.setName(<font color=red>"num"</font>+ row + <font color=red>"_"</font>+ col);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>cmb.setSelectedItem(data[row - 1][col]);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>panel.add(cmb);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>else</b></nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><font color=green>//&nbsp;其他列使用&nbsp;JTextField</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></font>JTextField txt = <b>new</b> JTextField(data[row - 1][col]);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>txt.setName(<font color=red>"num"</font>+ row + <font color=red>"_"</font>+ col);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>panel.add(txt);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>add(panel);</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr></nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr><font color=green>//&nbsp;从文件读取数据</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr></font><b>private</b> <b>void</b> readDataFromFile(String filename)</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>try</b> (BufferedReader br = <b>new</b> BufferedReader(new FileReader(filename)))</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>String line;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>int</b> row = 0;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>while</b> ((line = br.readLine()) != <b>null</b> && row &lt; ROWS)</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>String[] tokens = line.split(<font color=red>","</font>);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>for</b> (int col = 0; col &lt; COLS; col++)</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>data[row][col] = tokens[col];</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>row++;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>catch</b> (IOException e)</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>e.printStackTrace();</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr></nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr><font color=green>//&nbsp;保存数据到文件</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr></font><b>private</b> <b>void</b> saveData(String filename)</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>try</b> (BufferedWriter bw = <b>new</b> BufferedWriter(new FileWriter(filename)))</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>for</b> (int row = 0; row &lt; ROWS; row++)</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>for</b> (int col = 0; col &lt; COLS; col++)</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>Component comp = get(row + 1, col); <font color=green>//&nbsp;获取对应的组件</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></font>String value = <font color=red>""</font>;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>if</b> (comp <b>instanceof</b> JTextField)</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>value = ((JTextField) comp).getText();</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>else</b> <b>if</b> (comp <b>instanceof</b> JComboBox)</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>value = (String) ((JComboBox&lt;?&gt;) comp).getSelectedItem();</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>bw.write(value);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>if</b> (col &lt; COLS - 1)</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>bw.write(<font color=red>","</font>);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>bw.newLine();</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>catch</b> (IOException e)</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>e.printStackTrace();</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr></nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr><font color=green>//&nbsp;根据行列找到组件</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr></font><b>private</b> Component get(int row, <b>int</b> col)</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>Component[] components = getContentPane().getComponents();</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>for</b> (Component comp : components)</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>if</b> (comp.getName().equals(<font color=red>"num"</font>+ row + <font color=red>"_"</font>+ col))</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>return</b> comp;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>return</b> null;</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr></nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr><b>public</b> <b>static</b> <b>void</b> main(String[] args)</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>String filename = <font color=red>"data.txt"</font>; <font color=green>//&nbsp;这里可以指定文件路径</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></font>EditableDatasheet frame = <b>new</b> EditableDatasheet(filename);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>frame.setVisible(true);</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+<nobr>}</nobr><br>
+</p></td></tr></table>
+<table align=left style=display:block><tr><td  align=right style=color:teal valign=top><p>1<br>
+2<br>
+3<br>
+4<br>
+5<br>
+6<br>
+7<br>
+8<br>
+9<br>
+10<br>
+11<br>
+12<br>
+13<br>
+14<br>
+15<br>
+16<br>
+17<br>
+18<br>
+19<br>
+20<br>
+21<br>
+22<br>
+23<br>
+24<br>
+25<br>
+26<br>
+27<br>
+28<br>
+29<br>
+30<br>
+31<br>
+32<br>
+33<br>
+34<br>
+35<br>
+36<br>
+37<br>
+38<br>
+39<br>
+40<br>
+41<br>
+42<br>
+43<br>
+44<br>
+45<br>
+46<br>
+47<br>
+48<br>
+49<br>
+50<br>
+51<br>
+52<br>
+53<br>
+54<br>
+55<br>
+56<br>
+57<br>
+58<br>
+59<br>
+60<br>
+61<br>
+62<br>
+63<br>
+64<br>
+65<br>
+66<br>
+67<br>
+68<br>
+69<br>
+70<br>
+71<br>
+72<br>
+73<br>
+74<br>
+75<br>
+76<br>
+77<br>
+78<br>
+79<br>
+80<br>
+81<br>
+82<br>
+83<br>
+84<br>
+86<br>
+87<br>
+88<br>
+89<br>
+90<br>
+91<br>
+92<br>
+93<br>
+94<br>
+95<br>
+96<br>
+97<br>
+98<br>
+99<br>
+100<br>
+101<br>
+102<br>
+103<br>
+104<br>
+105<br>
+106<br>
+107<br>
+108<br>
+109<br>
+110<br>
+111<br>
+</p></td><td  align=left valign=top><p><nobr><b>import</b> javax.swing.*;</nobr><br>
+<nobr><b>import</b> java.awt.event.ActionEvent;</nobr><br>
+<nobr><b>import</b> java.awt.event.ActionListener;</nobr><br>
+<nobr><b>import</b> java.io.File;</nobr><br>
+<nobr><b>import</b> java.io.FileWriter;</nobr><br>
+<nobr><b>import</b> java.io.IOException;</nobr><br>
+<nobr><b>import</b> java.util.Scanner;</nobr><br>
+<nobr></nobr><br>
+<nobr><b>public</b> <b>class</b> TextEditor <b>extends</b> JFrame</nobr><br>
+<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr></nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr><b>private</b> JTextArea txt;</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr><b>private</b> String path;</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr></nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr><b>public</b> TextEditor()</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>setTitle(<font color=red>"Simple&nbsp;Text&nbsp;Editor"</font>);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>setSize(800, 600);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>txt = <b>new</b> JTextArea();</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>JMenuBar menuBar = <b>new</b> JMenuBar();</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>JMenu fileMenu = <b>new</b> JMenu(<font color=red>"File"</font>);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>JMenuItem openMenuItem = <b>new</b> JMenuItem(<font color=red>"Open"</font>);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>JMenuItem saveMenuItem = <b>new</b> JMenuItem(<font color=red>"Save"</font>);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>openMenuItem.addActionListener(new ActionListener()</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>@Override</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>public</b> <b>void</b> actionPerformed(ActionEvent e)</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>open();</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>saveMenuItem.addActionListener(new ActionListener()</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>@Override</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>public</b> <b>void</b> actionPerformed(ActionEvent e)</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>save();</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>fileMenu.add(openMenuItem);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>fileMenu.add(saveMenuItem);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>menuBar.add(fileMenu);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>setJMenuBar(menuBar);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>add(new JScrollPane(txt));</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>setVisible(true);</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr></nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr><b>private</b> <b>void</b> open()</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>path = JOptionPane.showInputDialog(this, <font color=red>"Enter&nbsp;file&nbsp;path:"</font>);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>if</b> (path != <b>null</b> && !path.isEmpty())</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>try</b></nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>File file = <b>new</b> File(path);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>Scanner scanner = <b>new</b> Scanner(file);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>scanner.useDelimiter(<font color=red>"\n"</font>);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>StringBuilder content = <b>new</b> StringBuilder();</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>while</b> (scanner.hasNext())</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>content.append(scanner.next()).append(<font color=red>"\n"</font>);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>txt.setText(content.toString().trim());</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>scanner.close();</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>catch</b> (IOException ex)</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>JOptionPane.showMessageDialog(this, path +  <font color=red>"&nbsp;does&nbsp;not&nbsp;exists&nbsp;"</font>, <font color=red>"Error"</font>, JOptionPane.ERROR_MESSAGE);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr></nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr><b>private</b> <b>void</b> save()</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>try</b></nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>FileWriter writer = <b>new</b> FileWriter(path);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>writer.write(txt.getText());</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>writer.close();</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>catch</b> (IOException ex)</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>JOptionPane.showMessageDialog(this, <font color=red>"Error&nbsp;saving&nbsp;file:&nbsp;"</font>+ ex.getMessage(), <font color=red>"Error"</font>, JOptionPane.ERROR_MESSAGE);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr></nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr><b>public</b> <b>static</b> <b>void</b> main(String[] args)</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>SwingUtilities.invokeLater(new Runnable()</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>@Override</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>public</b> <b>void</b> run()</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>new</b> TextEditor();</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>);</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+<nobr>}</nobr><br>
+</p></td></tr></table>
+
+
+
+<table align=left style=display:block><tr><td  align=right style=color:teal valign=top><p>1<br>
+2<br>
+3<br>
+4<br>
+5<br>
+6<br>
+7<br>
+8<br>
+9<br>
+10<br>
+11<br>
+12<br>
+13<br>
+14<br>
+15<br>
+16<br>
+17<br>
+18<br>
+19<br>
+20<br>
+23<br>
+24<br>
+28<br>
+29<br>
+30<br>
+31<br>
+32<br>
+33<br>
+34<br>
+35<br>
+36<br>
+37<br>
+38<br>
+39<br>
+40<br>
+41<br>
+42<br>
+43<br>
+44<br>
+45<br>
+46<br>
+47<br>
+48<br>
+49<br>
+50<br>
+51<br>
+52<br>
+53<br>
+55<br>
+56<br>
+57<br>
+58<br>
+59<br>
+60<br>
+61<br>
+62<br>
+63<br>
+64<br>
+65<br>
+66<br>
+67<br>
+68<br>
+69<br>
+70<br>
+71<br>
+72<br>
+73<br>
+74<br>
+75<br>
+76<br>
+77<br>
+78<br>
+79<br>
+80<br>
+81<br>
+82<br>
+83<br>
+84<br>
+85<br>
+86<br>
+87<br>
+88<br>
+89<br>
+90<br>
+91<br>
+92<br>
+93<br>
+94<br>
+95<br>
+96<br>
+97<br>
+98<br>
+99<br>
+100<br>
+101<br>
+102<br>
+103<br>
+104<br>
+105<br>
+106<br>
+107<br>
+108<br>
+109<br>
+110<br>
+111<br>
+112<br>
+113<br>
+114<br>
+115<br>
+116<br>
+117<br>
+118<br>
+119<br>
+120<br>
+121<br>
+122<br>
+123<br>
+124<br>
+125<br>
+126<br>
+127<br>
+128<br>
+129<br>
+130<br>
+131<br>
+132<br>
+133<br>
+134<br>
+135<br>
+136<br>
+137<br>
+138<br>
+139<br>
+140<br>
+141<br>
+142<br>
+143<br>
+144<br>
+145<br>
+146<br>
+147<br>
+148<br>
+149<br>
+150<br>
+151<br>
+152<br>
+153<br>
+154<br>
+155<br>
+156<br>
+157<br>
+158<br>
+159<br>
+160<br>
+161<br>
+162<br>
+163<br>
+164<br>
+165<br>
+166<br>
+167<br>
+168<br>
+169<br>
+170<br>
+171<br>
+172<br>
+173<br>
+174<br>
+175<br>
+176<br>
+177<br>
+178<br>
+179<br>
+180<br>
+181<br>
+182<br>
+183<br>
+184<br>
+185<br>
+186<br>
+187<br>
+188<br>
+189<br>
+190<br>
+191<br>
+192<br>
+193<br>
+194<br>
+195<br>
+196<br>
+197<br>
+198<br>
+199<br>
+200<br>
+201<br>
+202<br>
+203<br>
+204<br>
+205<br>
+206<br>
+207<br>
+208<br>
+209<br>
+210<br>
+211<br>
+212<br>
+213<br>
+214<br>
+215<br>
+216<br>
+217<br>
+218<br>
+219<br>
+220<br>
+221<br>
+222<br>
+223<br>
+224<br>
+225<br>
+226<br>
+227<br>
+228<br>
+229<br>
+230<br>
+231<br>
+232<br>
+233<br>
+234<br>
+235<br>
+236<br>
+237<br>
+238<br>
+239<br>
+240<br>
+241<br>
+242<br>
+243<br>
+244<br>
+245<br>
+246<br>
+247<br>
+248<br>
+249<br>
+250<br>
+251<br>
+252<br>
+253<br>
+254<br>
+255<br>
+256<br>
+257<br>
+258<br>
+259<br>
+260<br>
+261<br>
+262<br>
+263<br>
+264<br>
+265<br>
+266<br>
+267<br>
+268<br>
+269<br>
+270<br>
+271<br>
+272<br>
+273<br>
+274<br>
+275<br>
+276<br>
+277<br>
+278<br>
+279<br>
+280<br>
+281<br>
+282<br>
+283<br>
+284<br>
+285<br>
+286<br>
+287<br>
+288<br>
+289<br>
+290<br>
+291<br>
+292<br>
+293<br>
+294<br>
+295<br>
+296<br>
+297<br>
+298<br>
+299<br>
+300<br>
+301<br>
+302<br>
+303<br>
+304<br>
+305<br>
+306<br>
+307<br>
+308<br>
+309<br>
+310<br>
+311<br>
+312<br>
+313<br>
+314<br>
+315<br>
+316<br>
+317<br>
+318<br>
+319<br>
+320<br>
+</p></td><td  align=left valign=top><p><nobr><b>import</b> java.awt.*;</nobr><br>
+<nobr><b>import</b> java.io.*;</nobr><br>
+<nobr><b>import</b> java.util.Scanner;</nobr><br>
+<nobr><b>import</b> javax.swing.*;</nobr><br>
+<nobr></nobr><br>
+<nobr><b>public</b> <b>class</b> GoGame <b>extends</b> JFrame</nobr><br>
+<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr><b>final</b> <b>int</b> N = 19;</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr><b>int</b> cellSize;</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr><b>private</b> JLabel lblmyip = <b>new</b> JLabel(<font color=red>"My&nbsp;IP"</font>);</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr><b>private</b> JLabel lblpip = <b>new</b> JLabel(<font color=red>"Partner&nbsp;IP"</font>);</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr><b>private</b> JTextField txtmyip = <b>new</b> JTextField(<font color=red>"192.168.1.100"</font>);</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr><b>private</b> JTextField txtpip = <b>new</b>  JTextField(<font color=red>"192.168.1.103"</font>);</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr><b>private</b> JButton btnStart= <b>new</b> JButton(<font color=red>"Listen"</font>);</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr><b>private</b> JLabel lblmycolor = <b>new</b> JLabel(<font color=red>"Black"</font>);</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr><b>private</b> JMenuBar jMenuBar1 = <b>new</b> javax.swing.JMenuBar();</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr><b>private</b> JMenu     jMenu1 = <b>new</b> javax.swing.JMenu();</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr><b>private</b> JMenuItem jMenuItem1 = <b>new</b> javax.swing.JMenuItem();</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr><b>private</b> JMenuItem    jMenuItem2 = <b>new</b> javax.swing.JMenuItem();</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr></nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>Container contentpane = getContentPane();</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr></nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>Color [][] colors = <b>new</b> Color[N][];</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>JPanel board = <b>new</b> JPanel()</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>@Override</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>protected</b> <b>void</b> paintComponent(Graphics g)</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>super.paintComponent(g);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>paintGrid(width, g);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>for</b> (int row=0; row &lt; N; row++)</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>for</b> (int col=0;col&lt; N; col++)</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>g.setColor(colors[row][col]);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>if</b> (colors[row][col] != Color.ORANGE)</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>g.fillOval((int)((0.65+col)*cellSize),(int)((0.63+row)*cellSize), 3*cellSize/4,  3*cellSize/4 );</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>};</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr><b>int</b> width = 500;</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr><b>public</b> GoGame()</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>initComponents();</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr></nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr><b>public</b>  <b>void</b> paintGrid(int w, Graphics g)</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>cellSize = width/N;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>width  = N * cellSize;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>g.setColor(java.awt.Color.BLACK);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>for</b> (int row = 1; row &lt;= N; row++)</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>g.drawLine(cellSize, row * cellSize, width,  row * cellSize);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>for</b> (int col = 1; col &lt;= N; col++)</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>g.drawLine(col * cellSize, cellSize, col * cellSize, width);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr><b>private</b> <b>void</b> place(JComponent e, <b>int</b> x, <b>int</b> y)</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>GridBagConstraints c = <b>new</b> GridBagConstraints();</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.gridx = x;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.gridy = y;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.gridwidth = (y == 0?1:6);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.weightx = 1.0;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.weighty = (y==0?0.0:1.0);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>if</b> (y == 1 || x%2==1) c.fill = GridBagConstraints.BOTH;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.anchor =  x%2==0? GridBagConstraints.EAST: GridBagConstraints.WEST;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>c.insets = <b>new</b> java.awt.Insets(3, 3, 0, 0);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>contentpane.add(e, c);</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>@SuppressWarnings(<font color=red>"unchecked"</font>)</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr><b>private</b> <b>void</b> initComponents()</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>for</b> (int i=0; i &lt; N; i++)</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>colors[i] = <b>new</b> Color[N];</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>for</b> (int j=0; j &lt; N; j++)</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>colors[i][j] = Color.ORANGE;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>java.awt.GridBagConstraints c;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>Container contentpane = getContentPane();</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>contentpane.setLayout(new java.awt.GridBagLayout());</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>place(lblmyip,0,0);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>place(txtmyip,1,0);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>place(lblpip,2,0);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>place(txtpip,3,0);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>place(lblmycolor,4,0);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>place(btnStart,5,0);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>board.setSize(width+2*cellSize, width+3*cellSize);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>board.setVisible(true);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>place(board,0,1);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>setSize((int)(width*1.09), (int)(width*1.24));</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>setMinimumSize(new java.awt.Dimension((int)(width*1.08), (int)(width*1.24)));</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>pack();</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>board.setBackground(Color.ORANGE);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>board.addMouseListener(new java.awt.event.MouseAdapter()</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>public</b> <b>void</b> mouseClicked(java.awt.event.MouseEvent evt)</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>if</b> (state != State.listening)</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>boardMouseClicked(evt);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>btnStart.addActionListener(new java.awt.event.ActionListener()</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>public</b> <b>void</b> actionPerformed(java.awt.event.ActionEvent evt)</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>if</b> (state == State.init)</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>com.receive(true);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>lblmycolor.setText(<font color=red>"White"</font>);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>state  = State.listening;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>mycolor = Color.WHITE;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>btnStart.setText(<font color=red>"Quit"</font>);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>else</b> <b>if</b> (state  == State.listening)</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>com.sendnum(-1, 1, txtmyip.getText());</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>btnStart.setText(<font color=red>"Quit"</font>);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>init();</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>else</b> <b>if</b> (state  == State.thinking  )</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>com.sendnum(-1, 1, txtpip.getText());</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>btnStart.setText(<font color=red>"Surrend"</font>);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>init();</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>jMenu1.setText(<font color=red>"File"</font>);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>jMenuItem1.setText(<font color=red>"Save"</font>);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>jMenu1.add(jMenuItem1);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>jMenuItem2.setText(<font color=red>"Open"</font>);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>jMenu1.add(jMenuItem2);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>jMenuBar1.add(jMenu1);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>setJMenuBar(jMenuBar1);</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr><b>public</b> <b>void</b> drawStone(int r, <b>int</b> c, Color cl)</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>colors[r][c] = cl;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>board.repaint();</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>Dialogs com = <b>new</b> Dialogs()</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>public</b> <b>void</b> handlenum(int row, <b>int</b> col)</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>handle(  row,  col);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>};</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr><b>public</b> enum State</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>init, listening, thinking</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>};</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>Color mycolor = Color.BLACK;</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr><b>private</b> <b>void</b> init()</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>btnStart.setText(<font color=red>"Listen"</font>);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>lblmycolor.setText(<font color=red>"Black"</font>);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>state =  State.init;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>mycolor = Color.BLACK;</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>State state = State.init;</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr></nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr><b>private</b> <b>void</b>  boardMouseClicked(java.awt.event.MouseEvent evt)</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>if</b> (state== State.listening) return;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>int</b> y0 = board.getY();</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>int</b> x0 = board.getX();</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>int</b> col = Math.round((evt.getX()-x0)/cellSize);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>int</b> row = Math.round((evt.getY()-x0)/cellSize);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>if</b> (col &lt; 0) col = 0; <b>else</b> <b>if</b> (col &gt;=N) col = N-1;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>if</b> (row &lt; 0) row = 0; <b>else</b> <b>if</b> (row &gt;= N) row = N-1;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>drawStone(row, col, mycolor);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>com.sendnum(row,col,txtpip.getText());</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>com.receive(true);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>state = State.listening;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>btnStart.setText(<font color=red>"Quit"</font>);</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr></nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr><b>public</b> <b>void</b> handle(int row, <b>int</b> col)</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>if</b> (row == -1)</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>state = State.init;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>else</b></nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>drawStone(row, col, mycolor == Color.BLACK?Color.WHITE:Color.BLACK);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>state = State.thinking;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr></nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr><b>public</b> <b>static</b> <b>void</b> main(String args[])</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>java.awt.EventQueue.invokeLater(new Runnable()</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>public</b> <b>void</b> run()</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>new</b> GoGame().setVisible(true);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>);</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr></nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr><b>private</b> <b>void</b> save1()</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>try</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>FileWriter f = <b>new</b> FileWriter(<font color=red>"gogame.txt"</font>,false);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>for</b> (int r = 0; r &lt; N; r++)</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>for</b> (int c = 0; c &lt; N; c++)</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>f.append((colors[r][c] == Color.BLACK?<font color=red>"0"</font>:(colors[r][c] == Color.WHITE?<font color=red>"1"</font>:<font color=red>"2"</font>)));</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>f.write(<font color=red>"\n"</font>);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>if</b> (mycolor==Color.BLACK)</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>f.append( state==State.init?<font color=red>"2"</font>:(state==State.thinking?<font color=red>"0"</font>:<font color=red>"1"</font>));</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>else</b></nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>f.append( state==State.init?<font color=red>"2"</font>:(state==State.thinking?<font color=red>"1"</font>:<font color=red>"0"</font>));</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>f.close();</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>catch(Exception e)</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr><b>private</b> <b>void</b> open1()</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>try</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>Scanner s = <b>new</b> Scanner(new File(<font color=red>"gogame.txt"</font>));</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>for</b> (int r = 0; r &lt; N; r++)</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>String t = s.next();</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>for</b> (int c = 0; c &lt; N; c++)</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>char</b> x = t.charAt(c);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>Color color = x == <font color=#FF00CC>'1'</font>?Color.WHITE:(x==<font color=#FF00CC>'0'</font>?Color.BLACK:null);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>if</b> (color!=null)</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>drawStone(r, c, color);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>int</b> i = s.nextInt();</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>String m = JOptionPane.showInputDialog(<font color=red>"What&nbsp;is&nbsp;your&nbsp;previous&nbsp;color?"</font>);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>if</b> (m.equals(<font color=red>"black"</font>)) mycolor = Color.BLACK;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>else</b></nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>mycolor = Color.WHITE;</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>if</b> (i == 1 && mycolor == Color.WHITE || i == 0 && mycolor == Color.BLACK)</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>JOptionPane.showMessageDialog(this, <font color=red>"You&nbsp;got&nbsp;first"</font>);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>catch(Exception e)</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>board.repaint();</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr></nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr><b>private</b> <b>void</b> save()</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>try</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>ObjectOutputStream o = <b>new</b> ObjectOutputStream(new FileOutputStream(<font color=red>"gogame.txt"</font>));</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>o.writeObject(colors);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>o.writeObject(mycolor);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>o.writeObject(state);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>o.close();</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>catch(Exception e)</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr><b>private</b> <b>void</b> open()</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>try</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>ObjectInputStream o = <b>new</b> ObjectInputStream(new FileInputStream(<font color=red>"gogame.txt"</font>));</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>colors = (Color[][])o.readObject();</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>mycolor= (Color)o.readObject();</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>state= (State) o.readObject();</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr><b>if</b> (state == State.thinking)</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>JOptionPane.showMessageDialog(this, <font color=red>"You&nbsp;go&nbsp;first"</font>);</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>catch(Exception e)</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr></nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>board.repaint();</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr><b>private</b> <b>void</b> jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt)</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>save();</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr><b>private</b> <b>void</b> jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt)</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>{</nobr><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<nobr>open();</nobr><br>
+&nbsp;&nbsp;&nbsp;<nobr>}</nobr><br>
+<nobr>}</nobr><br>
+<nobr></nobr><br>
+</p></td></tr></table>
+< / body > < / html >
+
